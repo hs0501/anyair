@@ -19,6 +19,7 @@ public class GetCity {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("경표");
 		int cnt = 0;
 		int pageNo = 1;
 		try{
