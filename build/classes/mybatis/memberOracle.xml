@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.member">
+
+	<insert id="insertMember" parameterType="Member" >
+		insert into MEMBER values (#{id},#{passwd},#{name},#{jumin1},#{jumin2},#{email},#{blog},sysdate)
+	</insert>
+	
+	<update id="updateMember" parameterType="Member">
+		update MEMBER set passwd=#{passwd}, email=#{email}, blog=#{blog} where id=#{id}
+	</update>
+	 <select id="idCheck" parameterType="String" resultType="String">
+		select nvl(id,' ') from MEMBER where id = #{id}
+	</select>
+	
+	<select id="userCheck" parameterType="Member" resultType="String">
+		select nvl(passwd,' ') from MEMBER where id = #{id}
+	</select> 
+	<delete id="deleteMember" parameterType="map">
+		delete from MEMBER where id =#{id} and passwd = #{passwd}
+	</delete>
+
+
+<select id="getMember" parameterType="map" resultType="Member">
+		select * from MEMBER where id = #{id}
+	</select>
+	
+	<select id="getMembers" parameterType="map" resultType="Member">
+		select * from MEMBER
+	</select>
+	
+
+
+</mapper>

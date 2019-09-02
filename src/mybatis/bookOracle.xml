@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.book">
+	<select id="getSeats" resultType="Seat">
+		select * from any_seat
+	</select>
+<!-- 	<insert id="insertBook" parameterType="">
+	
+	</insert> -->
+	
+	<select id="getGoSchedule" parameterType="Schedule" resultType="Departure">
+		select * from any_departure
+		where #{go_date}&gt;=st_date and #{go_date}&lt;=ed_date
+		and arrival_city = #{arrival_city}
+		and departure_day = #{go_day}
+		order by departure_time
+	</select>
+	
+	<select id="getBackSchedule" parameterType="Schedule" resultType="Arrival">
+		select * from any_arrival
+		where #{back_date}&gt;=st_date and #{back_date}&lt;=ed_date
+		and departure_city = #{arrival_city}
+		and departure_day = #{back_day}
+		order by departure_time
+	</select>
+</mapper>
