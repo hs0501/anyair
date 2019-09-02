@@ -21,6 +21,7 @@ public class CityController {
 	@RequestMapping("/index")
 	public ModelAndView cities() throws Exception {
 		List<City> cityList = cityDBBeanMybatis.getCities();
+		System.out.println("안녕");
 		mv.addObject("cityList", cityList);
 		mv.setViewName("index");
  		return mv;
